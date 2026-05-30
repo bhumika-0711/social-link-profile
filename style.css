@@ -1,0 +1,221 @@
+/* ==========================================================================
+   CSS Variables — change colors and spacing in one place
+   ========================================================================== */
+:root {
+  /* Colors from the Frontend Mentor style guide */
+  --color-accent: hsl(75, 94%, 57%);
+  --color-text: hsl(0, 0%, 100%);
+  --color-grey-700: hsl(0, 0%, 20%);
+  --color-grey-800: hsl(0, 0%, 12%);
+  --color-grey-900: hsl(0, 0%, 8%);
+
+  /* Typography */
+  --font-family: "Inter", system-ui, sans-serif;
+  --font-size-body: 0.875rem; /* 14px */
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Layout & spacing */
+  --card-max-width: 24.375rem; /* 390px */
+  --card-padding: 2.5rem 2rem;
+  --card-radius: 0.75rem;
+  --avatar-size: 5.5rem; /* 88px */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.5rem;
+  --space-lg: 1.75rem;
+
+  /* Transitions for smooth hover effects */
+  --transition-fast: 0.2s ease;
+}
+
+/* ==========================================================================
+   Base / reset — consistent starting point across browsers
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-grey-900);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ==========================================================================
+   Page wrapper — keeps card centered on all screen sizes
+   ========================================================================== */
+.page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Profile card — main content container
+   ========================================================================== */
+.profile-card {
+  width: 100%;
+  max-width: var(--card-max-width);
+  padding: var(--card-padding);
+  text-align: center;
+  background-color: var(--color-grey-800);
+  border-radius: var(--card-radius);
+}
+
+.profile-card__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+/* Circular profile image */
+.profile-card__avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  margin-bottom: var(--space-xs);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-card__name {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+}
+
+/* Green accent for location */
+.profile-card__location {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+}
+
+.profile-card__bio {
+  margin-top: var(--space-xs);
+}
+
+.profile-card__bio p {
+  font-size: 0.75rem; /* 12px — slightly smaller than body */
+  color: hsl(0, 0%, 80%);
+}
+
+/* ==========================================================================
+   Social link buttons — stacked vertically with hover states
+   ========================================================================== */
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.link-list__button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-family: inherit;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  background-color: var(--color-grey-700);
+  border: none;
+  border-radius: var(--card-radius);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+/* Hover: highlight with accent green */
+.link-list__button:hover {
+  color: var(--color-grey-900);
+  background-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Keyboard focus — visible outline for accessibility */
+.link-list__button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Active press feedback */
+.link-list__button:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Footer attribution (Frontend Mentor challenge credit)
+   ========================================================================== */
+.attribution {
+  font-size: 0.6875rem;
+  text-align: center;
+  color: hsl(0, 0%, 60%);
+}
+
+.attribution a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.attribution a:hover {
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   Responsive tweaks — tighter spacing on very small screens
+   ========================================================================== */
+@media (max-width: 23.4375rem) {
+  /* 375px and below */
+  :root {
+    --card-padding: 2rem 1.5rem;
+  }
+
+  .profile-card__name {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  /* 768px and up — slightly more breathing room on desktop */
+  body {
+    padding: var(--space-lg);
+  }
+}
